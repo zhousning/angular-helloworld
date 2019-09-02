@@ -1,0 +1,13 @@
+<app-to-do-list #todolist><app-to-do-list>
+<input type="text" [(ngModel)]="keyword">
+<button id="search" (click)="doSearch()">搜索</button>
+
+<ul>
+  <li *ngFor="let item of history; let key=index;">{{item}}---
+    <button id="delete" (click)="doDelete(key)">删除</button>
+  </li>
+</ul>
+
+<div #mydiv>
+  这是一个div
+</div>

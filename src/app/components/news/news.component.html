@@ -1,0 +1,69 @@
+<p>news works!</p>
+<p>{{title}}</p>
+
+<p>{{msg}}</p>
+<div *ngIf="flag">
+  <h1>{{userinfo.name}}</h1>
+</div>
+<div *ngIf="!flag">
+  <p [title]="msg">绑定属性title 用msg为值</p>
+</div>
+<span [innerHTML]="content"></span>
+
+
+<!-- if key==1 设置class=red -->
+<p *ngFor="let item of arr;let key=index;">
+  <span *ngIf="key==1" class="red"> {{key}}---{{item}}</span>
+</p>
+
+<ul [ngSwitch]="score">
+  <li *ngSwitchCase="1">已支付</li>
+  <li *ngSwitchCase="2">已确认</li>
+  <li *ngSwitchCase="3">已发货</li>
+  <li *ngSwitchDefault>无效</li>
+</ul>
+
+<div [ngClass]="{'red':flag, 'blue':!flag}">
+  ngClass演示
+</div>
+
+<p *ngFor="let item of arr;let key=index;" [ngClass]="{'red':key==0, 'blue':key==1}">
+  {{key}}---{{item}}
+</p>
+
+
+<div [ngStyle]="{'background-color':attr}">
+  ngStyle演示
+</div>
+
+<p>{{today | date:'yyyy-MM-dd HH:mm:ss'}}</p>
+
+<button (click)="runEvent($event)">
+  设置按钮颜色
+</button>
+<button (click)="getData()">
+  点击按钮触发get事件
+</button>
+<button (click)="setData()">
+  点击按钮触发set事件
+</button>
+
+
+<p>
+{{userinfo | json}}
+</p>
+<!-- 双向数据绑定只在表单中 -->
+<input type="text" [(ngModel)]="userinfo.name" (keyup)="keyUpFn($event)" />
+{{userinfo.name}}
+<input name="sex" type="radio" value="1" id="sex1" [(ngModel)]="userinfo.sex"> <label for="sex1">男</label>
+<input name="sex" type="radio" value="2" id="sex2" [(ngModel)]="userinfo.sex"> <label for="sex2">女</label>
+
+<select name="city" id="city" [(ngModel)]="userinfo.city">
+  <option [value]="item" *ngFor="let item of userinfo.cityList">{{item}}</option>
+</select>
+
+<span *ngFor="let item of userinfo.hobby;let key=index;">
+  <input type="checkbox" [id]="'checkbox'+key" [(ngModel)]="item.checked"/>
+  <label [for]="'checkbox'+key">{{item.title}}</label>
+  &nbsp;&nbsp;
+</span>

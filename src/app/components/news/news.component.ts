@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, NavigationExtras } from '@angular/router';
 
 @Component({
   selector: 'app-news',
@@ -39,7 +40,7 @@ export class NewsComponent implements OnInit {
   flag:boolean = false;
 
   today = new Date();
-  constructor() {
+  constructor(public router:Router) {
     this.msg = "msg"
   }
 
@@ -63,6 +64,14 @@ export class NewsComponent implements OnInit {
     console.log(this.userinfo.name);
     console.log(this.userinfo.sex);
     console.log(this.userinfo.city);
+  }
+
+  goNewsContent() {
+    let extras: NavigationExtras = {
+      queryParams: {'id': '123'}
+    };
+    //this.router.navigate(['/newscontent/', '323']);
+    this.router.navigate(['/newscontent'], extras);
   }
 
   ngOnInit() {

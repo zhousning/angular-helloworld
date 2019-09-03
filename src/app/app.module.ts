@@ -2,6 +2,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -11,9 +12,13 @@ import { NewsComponent } from './components/news/news.component';
 import { HomeComponent } from './components/home/home.component';
 import { SearchComponent } from './components/search/search.component';
 import { ToDoListComponent } from './components/to-do-list/to-do-list.component';
-
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { NewscontentComponent } from './components/newscontent/newscontent.component';
+
+//引入自定义模块
+import { UserModule } from './module/user/user.module';
+import { ProductModule } from './module/product/product.module';
 
 import {StorageService} from './services/storage.service';
 
@@ -27,13 +32,18 @@ import {StorageService} from './services/storage.service';
     SearchComponent,
     ToDoListComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    NewscontentComponent
     ],
     //配置当前模块运行依赖的其他模块
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    HttpClientModule,
+    HttpClientJsonpModule,
+    FormsModule,
+    UserModule,
+    ProductModule
     ],
     //配置项目所需要的服务
     providers: [StorageService],

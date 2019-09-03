@@ -67,3 +67,21 @@
   <label [for]="'checkbox'+key">{{item.title}}</label>
   &nbsp;&nbsp;
 </span>
+
+<h1>普通传值</h1>
+<ul>
+  <li *ngFor="let item of arr;let key=index;">
+    <a [routerLink]="['/news/newscontent']" [queryParams]="{id:key}">跳转到新闻详情</a>  
+  </li>
+</ul>
+
+<router-outlet></router-outlet>
+
+<h1>动态路由传值</h1>
+<ul>
+  <li *ngFor="let item of arr;let key=index;">
+    <a [routerLink]="['/news/newscontent', key]">跳转到新闻详情</a>  
+  </li>
+</ul>
+
+<button (click)="goNewsContent()">js跳转</button>

@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import {StorageService} from '../../services/storage.service';
+import {HttpserviceService} from '../../services/httpservice.service';
 import { map, filter } from 'rxjs/operators';
 
 /*
@@ -22,7 +23,7 @@ export class SearchComponent implements OnInit {
   @ViewChild("mydiv", { static: false }) mydiv:ElementRef;
   @ViewChild('todolist', { static: false }) todolist:any;
 
-  constructor(public storageService:StorageService) {
+  constructor(public storageService:StorageService, public httpservice:HttpserviceService) {
   }
 
   doSearch() {
@@ -54,7 +55,7 @@ export class SearchComponent implements OnInit {
       }, 1000);*/
 
     //多次订阅
-    var intervalStream = this.storageService.getIntervalRxjsData();
+    /*var intervalStream = this.storageService.getIntervalRxjsData();
     intervalStream.pipe(
       filter((value:any) => {
         if (value%2==0) {
@@ -66,6 +67,13 @@ export class SearchComponent implements OnInit {
       })
     ).
     subscribe(value => console.log(value));
+    */
+
+    //this.httpservice.getData();
+    //this.httpservice.getJsonpData();
+
+    let api = 'http://a.itying.com/api/productlist';
+    this.httpservice.axiosGet(api).subscribe(value => console.log(value));
   }
 
   ngAfterViewInit(): void {

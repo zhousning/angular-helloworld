@@ -1,5 +1,15 @@
 
+<!--
 <app-home></app-home>
 <hr/>
 <app-search></app-search>
 <app-news></app-news>
+-->
+
+
+<app-user></app-user>
+<a routerLink="/user" routerLinkActive="active">用户</a>
+<a routerLink="/home" routerLinkActive="active">首页</a>
+<a routerLink="/news"routerLinkActive="active">新闻</a>
+<a [routerLink]="['/home']">home</a>
+<router-outlet></router-outlet>

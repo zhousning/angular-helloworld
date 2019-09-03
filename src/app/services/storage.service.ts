@@ -20,10 +20,6 @@ export class StorageService {
     localStorage.removeItem(key);
   }
 
-  getData() {
-    alert("获取服务数据");
-  }
-
   getRxjsData() {
     return new Observable(observer => {
       setTimeout(() => {
